@@ -2,6 +2,7 @@ package provider
 
 import (
 	"os"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -337,6 +338,10 @@ func resourceDockerRegistryImage() *schema.Resource {
 				Description: "The sha256 digest of the image.",
 				Computed:    true,
 			},
+		},
+		Timeouts: &schema.ResourceTimeout{
+		    Create: schema.DefaultTimeout(40 * time.Minute),
+		    Update: schema.DefaultTimeout(40 * time.Minute),
 		},
 	}
 }
