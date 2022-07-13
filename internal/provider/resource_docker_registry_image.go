@@ -338,5 +338,9 @@ func resourceDockerRegistryImage() *schema.Resource {
 				Computed:    true,
 			},
 		},
+		Timeouts: &schema.ResourceTimeout{
+            		Create: schema.DefaultTimeout(40 * time.Minute),
+			Update: schema.DefaultTimeout(40 * time.Minute)
+        	},
 	}
 }
